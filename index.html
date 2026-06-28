@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>郭吉雅AI视觉作品集</title>
+  <meta name="description" content="AI商业视觉作品集：按摩椅、空气净化器、小红书测评图、门店设计、安装流程系列图。" />
+  <style>
+    /*
+      ============================================================
+      AI商业视觉作品集 - 单页网页模板
+      使用方式：
+      1. 把本文件命名为 index.html
+      2. 在同级目录新建 images 文件夹
+      3. 把作品图放进 images 文件夹
+      4. 修改下方 JS 中的 portfolioData 内容即可
+      5. 图片路径示例：images/massage-chair-01.jpg
+      ============================================================
+    */
+
+    :root {
+      --bg: #f7f3ed;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --text: #2a2723;
+      --muted: #716a61;
+      --light-muted: #a69b90;
+      --line: rgba(42, 39, 35, 0.12);
+      --brand: #b9885a;
+      --brand-dark: #6e4b30;
+      --accent: #e8d5bf;
+      --shadow: 0 18px 45px rgba(42, 39, 35, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      --font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at top left, rgba(232, 213, 191, 0.7), transparent 34%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.9), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 243, 237, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), #ead0b1);
+      box-shadow: 0 10px 25px rgba(185, 136, 90, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 86px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--brand-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 5px rgba(185, 136, 90, 0.16);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.96;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-subtitle {
+      margin: 24px 0 0;
+      max-width: 700px;
+      font-size: clamp(17px, 2vw, 22px);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 560px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+    }
+
+    .hero-placeholder {
+      height: 560px;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(185, 136, 90, 0.12), rgba(255,255,255,0.55)),
+        repeating-linear-gradient(45deg, rgba(42,39,35,0.04) 0 12px, transparent 12px 24px);
+      color: var(--muted);
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 250, 243, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.8);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .hero-tag strong { display: block; }
+    .hero-tag span { color: var(--muted); font-size: 13px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 74px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--brand-dark);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .section-desc {
+      max-width: 520px;
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0 30px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: #fff;
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--paper-2);
+      border: 1px solid rgba(42, 39, 35, 0.10);
+      box-shadow: 0 12px 30px rgba(42, 39, 35, 0.055);
+      cursor: pointer;
+      transition: 0.24s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .work-img {
+      aspect-ratio: 4 / 5;
+      background: #eee7dd;
+      overflow: hidden;
+    }
+
+    .work-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.45s ease;
+    }
+
+    .work-card:hover .work-img img {
+      transform: scale(1.035);
+    }
+
+    .placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      color: var(--light-muted);
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255,255,255,0.75), transparent 28%),
+        linear-gradient(135deg, rgba(185, 136, 90, 0.13), rgba(255,255,255,0.6)),
+        repeating-linear-gradient(45deg, rgba(42,39,35,0.045) 0 9px, transparent 9px 18px);
+    }
+
+    .work-body {
+      padding: 18px;
+    }
+
+    .work-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--light-muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .work-card h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .work-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--brand-dark);
+      background: rgba(232, 213, 191, 0.55);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .case-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .case {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 22px;
+      align-items: stretch;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .case-text {
+      padding: 10px 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .case-text h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+    }
+
+    .case-text p {
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    .case-points {
+      padding: 0;
+      margin: 16px 0 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-points li::before {
+      content: "•";
+      color: var(--brand);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .case-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .case-gallery .gallery-item {
+      min-height: 210px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #eee7dd;
+    }
+
+    .case-gallery img {
+      width: 100%;
+      height: 100%;
+      min-height: 210px;
+      object-fit: cover;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .process-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(42, 39, 35, 0.045);
+    }
+
+    .process-num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--text);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .process-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .process-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 36px;
+      border-radius: 34px;
+      background: var(--text);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-card::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      right: -160px;
+      top: -160px;
+      background: radial-gradient(circle, rgba(185,136,90,0.5), transparent 70%);
+    }
+
+    .about-card > * { position: relative; z-index: 1; }
+
+    .about-card h2 { color: #fff; }
+    .about-card p { color: rgba(255,255,255,0.76); }
+
+    .skill-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .skill {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 13px 14px;
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+    }
+
+    .contact-box {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .contact-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .contact-line:last-child { border-bottom: 0; }
+    .contact-line b { color: #fff; }
+
+    footer {
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(18, 16, 14, 0.68);
+      backdrop-filter: blur(12px);
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(1060px, 100%);
+      max-height: min(88vh, 900px);
+      overflow: auto;
+      background: var(--paper);
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+    }
+
+    .modal-img {
+      width: 100%;
+      max-height: 62vh;
+      object-fit: contain;
+      background: #efe6dc;
+    }
+
+    .modal-body {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .modal-body h3 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.035em;
+    }
+
+    .modal-body p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .close-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+    }
+
+    .edit-note {
+      margin-top: 18px;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px dashed rgba(185, 136, 90, 0.45);
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--brand-dark);
+      font-size: 14px;
+    }
+
+
+
+    .report-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .report-summary,
+    .report-card {
+      background: rgba(255, 250, 243, 0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .report-summary {
+      padding: 28px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .report-summary h3,
+    .report-card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .report-summary p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .report-meta {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .report-meta div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .report-meta b {
+      color: var(--text);
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .report-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .report-card {
+      padding: 24px;
+    }
+
+    .report-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .report-card li + li {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid,
+      .case,
+      .about-card,
+      .report-wrap {
+        grid-template-columns: 1fr;
+      }
+      .report-summary { position: static; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .stats, .process { grid-template-columns: repeat(2, 1fr); }
+      .hero-card, .hero-card img, .hero-placeholder { min-height: 420px; height: 420px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, var(--max)); }
+      .hero { padding: 52px 0 38px; }
+      section { padding: 54px 0; }
+      .grid, .stats, .process, .case-gallery, .skill-list {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        display: block;
+      }
+      .case, .about-card { padding: 18px; border-radius: 24px; }
+      .hero-tag { display: block; }
+      .modal-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#top" aria-label="返回首页">
+        <span class="logo-mark"></span>
+        <span id="navName">AI视觉作品集</span>
+      </a>
+      <div class="nav-links">
+        <a href="#works">作品</a>
+        <a href="#cases">项目</a>
+        <a href="#process">流程</a>
+        <a href="#report">工作报告</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" id="heroEyebrow">AI Visual Portfolio</div>
+          <h1 id="heroTitle">关于SENSOLOGY<br />AI视觉作品集</h1>
+          <p class="hero-subtitle" id="heroSubtitle">
+            主要负责松胜按摩椅、思乐智空气净化器等家电家居品类的AI生图、场景视觉、产品种草图与门店空间设计。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#works">查看作品</a>
+            <a class="btn btn-secondary" href="#contact">联系我</a>
+          </div>
+          <div class="stats" id="stats"></div>
+          <div class="edit-note">
+            Primarily responsible for AI-generated imagery, scene visualization, product promotion graphics, and store space design for home appliance and home furnishing categories, including Songsheng massage chairs and Silezhi air purifiers.
+          </div>
+        </div>
+        <div class="hero-card" id="heroImageWrap">
+          <div class="hero-placeholder">首屏大图占位<br />把图片放到 images 文件夹后，在 portfolioData.hero.image 中填写路径</div>
+          <div class="hero-tag">
+            <div>
+              <strong id="heroImageTitle">精选作品预览</strong>
+              <span id="heroImageDesc">按摩椅场景图</span>
+            </div>
+            <span>2026</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="works">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Selected Works</div>
+            <h2>精选作品</h2>
+            <p class="section-desc">按品类和用途展示AI视觉内容能力：产品场景、连续叙事、平台种草、空间设计。</p>
+          </div>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="grid" id="worksGrid"></div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Case Studies</div>
+            <h2>项目案例</h2>
+            <p class="section-desc">按摩椅真实家居场景图，按摩椅安装流程系列图和空气净化器创意视觉探索。</p>
+          </div>
+        </div>
+        <div class="case-list" id="caseList"></div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Workflow</div>
+            <h2>工作流程</h2>
+            <p class="section-desc">从参考图分析到提示词设计，再到生成筛选、商业化输出。</p>
+          </div>
+        </div>
+        <div class="process" id="processGrid"></div>
+      </div>
+    </section>
+
+
+
+    <section id="report">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Work Report</div>
+            <h2>工作报告</h2>
+            <p class="section-desc">下面为本人近期AI生图板块的工作报告。</p>
+          </div>
+        </div>
+        <div class="report-wrap">
+          <aside class="report-summary">
+            <h3 id="reportTitle">AI生图阶段工作报告</h3>
+            <p id="reportOverview">本阶段围绕按摩椅与空气净化器品类，完成AI视觉内容生成、平台素材适配与商业场景探索。</p>
+            <div class="report-meta" id="reportMeta"></div>
+          </aside>
+          <div class="report-list" id="reportSections"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-card">
+          <div>
+            <div class="section-kicker" style="color:#e8d5bf;">About</div>
+            <h2 id="aboutTitle">关于我的AI视觉工作</h2>
+            <p id="aboutText">
+              我负责围绕产品品类、平台内容需求和商业目标，完成从视觉方向策划、提示词设计、场景生成、内容优化到最终素材输出的完整流程。
+            </p>
+            <div class="skill-list" id="skillList"></div>
+          </div>
+          <div class="contact-box" id="contact">
+            <h3 style="margin:0 0 12px;font-size:26px;letter-spacing:-0.03em;">联系 / 备注</h3>
+            <p style="margin:0 0 16px;color:rgba(255,255,255,0.74);">这里可以替换成你的邮箱、微信、电话或公司内部备注。</p>
+            <div id="contactList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span id="footerText">SENSOLOGYAI视觉作品集. Built for product visual content.</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="作品详情">
+    <div class="modal-panel">
+      <div id="modalImageBox"></div>
+      <div class="modal-body">
+        <div>
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+          <div class="tags" id="modalTags"></div>
+        </div>
+        <button class="close-btn" id="closeModal">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      ============================================================
+      只需要修改这里：portfolioData
+      图片路径写法：images/你的图片名.jpg
+      没有图片时，image 留空字符串 ""，页面会自动显示占位图。
+      ============================================================
+    */
+
+    const portfolioData = {
+      siteName: "AI视觉作品集",
+      footer: "SENSOLOGYAI视觉作品集。",
+
+      hero: {
+        eyebrow: "AI Visual Portfolio",
+        title: "关于SENSOLOGYAI\n视觉作品集",
+        subtitle: "思乐智空气净化器、松胜按摩椅等家电家居品类的AI生图、场景视觉、产品种草图与门店空间设计。",
+        image: "images/massage-1.png",
+        imageTitle: "精选作品预览",
+        imageDesc: "按摩椅场景图 "
+      },
+
+      stats: [
+        { number: "01", label: "思乐智净化器" },
+        { number: "02", label: "松胜按摩椅" },
+        { number: "03", label: "场景、测评、安装、门店、创意" },
+        { number: "04", label: "真实手机拍摄视角控制" }
+      ],
+
+      categories: [
+        { id: "all", name: "全部" },
+        { id: "massage", name: "按摩椅场景" },
+        { id: "installation", name: "安装流程" },
+        { id: "xhs", name: "小红书测评" },
+        { id: "purifier", name: "净化器创意" },
+        { id: "store", name: "门店设计" }
+      ],
+
+      works: [
+        {
+          title: "按摩椅高端客厅场景",
+          category: "massage",
+          categoryName: "按摩椅场景",
+          image: "images/massage-2.png",
+          description: "按摩椅自然融入中国高端住宅客厅，强调真实家居感、舒适感和产品主体表现。",
+          tags: ["高端客厅", "真实家居", "产品主体"]
+        },
+        {
+          title: "按摩椅窗边休闲角",
+          category: "massage",
+          categoryName: "按摩椅场景",
+          image: "images/massage-3.png",
+          description: "将按摩椅放在卧室窗边一角，营造日常放松、晒太阳、居家休息的氛围。",
+          tags: ["窗边", "卧室", "生活感"]
+        },
+        {
+          title: "按摩椅配送搬运",
+          category: "installation",
+          categoryName: "安装流程",
+          image: "images/massage-4.png",
+          description: "从户外搬运，呈现真实服务流程。",
+          tags: ["搬运", "户外", "纪实"]
+        },
+        {
+          title: "按摩椅开箱与撕保护膜",
+          category: "installation",
+          categoryName: "安装流程",
+          image: "images/massage-5.png",
+          description: "展示安装师傅拆箱、取出按摩椅、撕掉保护膜、检查机器的真实收尾过程。",
+          tags: ["开箱", "撕膜", "检查"]
+        },
+        {
+          title: "小红书按摩椅对比测评图",
+          category: "xhs",
+          categoryName: "小红书测评",
+          image: "images/massage-6.jpg",
+          description: "结合真实场景和信息标签，突出按摩椅功能差异、使用体验和种草逻辑。",
+          tags: ["对比测评", "种草图", "信息图"]
+        },
+        {
+          title: "按摩椅功能卖点解析",
+          category: "xhs",
+          categoryName: "小红书测评",
+          image: "images/massage-7.jpg",
+          description: "围绕肩颈、腰背、腿部、包裹感、家居适配度等维度做平台化视觉表达。",
+          tags: ["卖点", "体验", "平台适配"]
+        },
+        {
+          title: "空气净化器创意视觉",
+          category: "purifier",
+          categoryName: "净化器创意",
+          image: "images/massage-8.jpg",
+          description: "把不可见的洁净空气转化成可感知的视觉语言，突出幽默有趣的科技感。",
+          tags: ["空气可视化", "幽默", "科技感"]
+        },
+        {
+          title: "净化器家庭健康场景",
+          category: "purifier",
+          categoryName: "净化器创意",
+          image: "images/massage-9.png",
+          description: "围绕宠物、卧室、客厅等场景，强化净化器的家庭健康价值。",
+          tags: ["客厅", "宠物", "健康家居"]
+        },
+        {
+          title: "按摩椅门店空间设计",
+          category: "store",
+          categoryName: "门店设计",
+          image: "images/massage-10.png",
+          description: "探索按摩椅线下体验店的陈列、灯光、动线、体验区和品牌氛围。",
+          tags: ["体验店", "空间设计", "陈列"]
+        }
+      ],
+
+      cases: [
+        {
+          title: "按摩椅真实家居场景图",
+          description: "围绕按摩椅产品生成适合小红书、品牌宣传使用的真实家居场景图，重点表现产品在中国住宅环境中的自然融入感。",
+          points: [
+            "控制按摩椅为画面主体，同时保留真实居住环境",
+            "避免展厅感、电商硬广感和过度样板间效果",
+            "加入人物、宠物、沙发、地毯、窗帘、生活用品等细节"
+          ],
+          images: ["images/massage-11.png", "images/massage-12.png", "images/massage-13.png", "images/massage-26.png", "images/massage-27.png", "images/massage-28.png", "images/massage-29.png", "images/massage-30.png", "images/massage-31.png", "images/massage-32.png", "images/massage-33.png", "images/massage-34.png"]
+        },
+        {
+          title: "按摩椅安装流程系列图",
+          description: "模拟按摩椅从配送到安装完成的完整流程，包含户外搬运、进电梯、入户、开箱、撕保护膜、检查机器等连续场景。",
+          points: [
+            "统一人物、纸箱、家居环境，增强系列连贯性",
+            "动作状态真实，强调纪实抓拍感",
+            "适合服务流程展示、售后安装内容和小红书记录类内容"
+          ],
+          images: ["images/massage-14.png", "images/massage-15.png", "images/massage-16.png", "images/massage-35.png", "images/massage-36.png", "images/massage-37.png"]
+        },
+        {
+          title: "空气净化器创意视觉探索",
+          description: "围绕空气净化器产品进行创意视觉探索，重点表达洁净空气、健康家庭、科技净化和空间清新感。",
+          points: [
+            "将不可见的净化效果转化为可视化画面",
+            "适配客厅、卧室、宠物家庭等场景",
+            "可用于电商视觉和社媒传播素材"
+          ],
+          images: ["images/massage-17.png", "images/massage-18.jpg", "images/massage-19.png","images/massage-20.jpg","images/massage-21.jpg","images/massage-22.jpg","images/massage-23.png","images/massage-24.png","images/massage-25.png"]
+        }
+      ],
+
+
+
+      report: {
+        title: "AI生图阶段工作报告",
+        overview: "本阶段主要围绕按摩椅、空气净化器两大品类，完成AI视觉内容生成、场景构思、提示词优化、小红书素材等适配的设计探索。整体目标是提升产品视觉表现力，丰富内容投放素材，并为品牌宣传、平台种草和线下空间方案提供可用视觉参考。",
+        meta: [
+          { label: "工作品类", value: "按摩椅 / 空气净化器" },
+          { label: "内容方向", value: "场景图、创意图、测评图、安装流程、门店设计" },
+          { label: "输出形式", value: "AI生成图、提示词、分镜方案" }
+        ],
+        sections: [
+          {
+            title: "一、主要工作内容",
+            points: [
+              "围绕按摩椅生成高端客厅、卧室、窗边休闲区、沙发前方、安装入户、开箱、撕保护膜等多类真实家居场景图。",
+              "围绕空气净化器探索创意视觉方向，重点表达洁净空气、健康生活、科技感与宠物家庭等场景价值。",
+              "制作小红书按摩椅对比测评图方向，强化功能卖点、真实体验感、信息层级和平台种草属性。",
+              "探索按摩椅门店设计视觉，包括门店外立面、产品陈列区、体验区、接待区、灯光氛围与品牌空间感。"
+            ]
+          },
+          {
+            title: "二、工作方法与优化",
+            points: [
+              "通过分析参考图，拆解空间风格、构图、光线、产品位置、人物动作和生活细节，再转化为可执行提示词。",
+              "针对按摩椅画面，重点避免展厅感、电商主图感和过度样板间感，强化真实居家环境与生活痕迹。",
+              "建立连续叙事场景，例如户外搬运、进电梯、入户、开箱、拆出产品、撕保护膜、检查调试等安装流程。",
+              "根据不同品类调整视觉策略：按摩椅偏真实体验和舒适感，净化器偏创意表达、空气可视化和健康感。"
+            ]
+          },
+          {
+            title: "三、阶段成果",
+            points: [
+              "形成按摩椅高端住宅场景、真实使用场景、安装流程场景和开箱检查场景的提示词与视觉方向。",
+              "积累净化器创意视觉方向，可用于社媒、电商等不同内容需求。",
+              "搭建小红书对比测评图的内容结构，明确图文结合、卖点对比和真实体验表达方式。",
+              "完成按摩椅门店空间设计的视觉探索，为后续线下体验店方案提供参考。"
+            ]
+          },
+          {
+            title: "四、存在问题",
+            points: [
+              "AI生成结果稳定性仍需优化，容易出现主体不够突出、空间布局同质化、人物动作不自然等情况。",
+              "连续系列图的一致性较难控制，人物、纸箱、空间和产品细节需要进一步统一。",
+              "部分画面容易过度精致，需要反复强调手机拍摄、真实居住痕迹和非广告化构图。",
+              "小红书测评图还需要继续加强信息表达、文字层级和用户阅读逻辑。"
+            ]
+          },
+          {
+            title: "五、下阶段计划",
+            points: [
+              "继续完善按摩椅场景图库，覆盖不同户型、不同人群、不同使用状态和不同安装环节。",
+              "优化按摩椅配送安装完整流程图，提高人物、纸箱、空间、产品的一致性与真实感。",
+              "深化净化器创意视觉，探索更有记忆点的空气净化、健康家庭、母婴宠物场景表达。",
+              "继续制作小红书对比测评图和功能卖点图，提高内容种草能力和商业转化价值。",
+              "完善按摩椅门店设计方向，细化陈列方式、体验动线、灯光氛围和品牌空间语言。"
+            ]
+          }
+        ]
+      },
+
+      process: [
+        { title: "参考图分析", text: "拆解空间风格、构图、光线、产品位置、人物动作和生活细节。" },
+        { title: "提示词设计", text: "根据品类、平台和商业目标，设计可控的场景提示词和负向限制。" },
+        { title: "多轮生成优化", text: "反复调整主体占比、真实感、画面构图、人物动作和系列一致性。" },
+        { title: "商业化输出", text: "筛选适合小红书、详情页、门店设计和品牌内容使用的最终素材。" }
+      ],
+
+      about: {
+        title: "关于我的AI视觉工作",
+        text: "我负责围绕产品品类、平台内容需求和商业目标，完成从视觉方向策划、提示词设计、场景生成、内容优化到最终素材输出的完整流程。",
+        skills: [
+          "AI生图与提示词设计",
+          "产品场景化视觉",
+          "小红书内容适配",
+          "连续分镜与系列图",
+          "门店空间视觉探索",
+          "家电家居品类理解"
+        ]
+      },
+
+      contact: [
+        { label: "姓名", value: "郭吉雅" },
+        { label: "邮箱", value: "940219121@qq.com" },
+        { label: "方向", value: "AI创意视觉 / 产品场景图 / 社媒素材" }
+      ]
+    };
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    function textWithBreaks(text) {
+      return String(text || "").replace(/\n/g, "<br />");
+    }
+
+    function imageOrPlaceholder(src, alt = "作品图片", className = "") {
+      if (!src) {
+        return `<div class="placeholder ${className}">图片占位<br />替换为 images/你的图片名.jpg</div>`;
+      }
+      return `<img class="${className}" src="${src}" alt="${alt}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>图片路径错误<br />请检查 images 文件夹和文件名</div>'" />`;
+    }
+
+    function initHero() {
+      $("#navName").textContent = portfolioData.siteName;
+      $("#footerText").textContent = portfolioData.footer;
+      $("#heroEyebrow").textContent = portfolioData.hero.eyebrow;
+      $("#heroTitle").innerHTML = textWithBreaks(portfolioData.hero.title);
+      $("#heroSubtitle").textContent = portfolioData.hero.subtitle;
+      $("#heroImageTitle").textContent = portfolioData.hero.imageTitle;
+      $("#heroImageDesc").textContent = portfolioData.hero.imageDesc;
+
+      const wrap = $("#heroImageWrap");
+      if (portfolioData.hero.image) {
+        const tag = wrap.querySelector(".hero-tag");
+        wrap.innerHTML = `<img src="${portfolioData.hero.image}" alt="${portfolioData.hero.imageTitle}" />`;
+        wrap.appendChild(tag);
+      }
+
+      $("#stats").innerHTML = portfolioData.stats.map(item => `
+        <div class="stat">
+          <b>${item.number}</b>
+          <span>${item.label}</span>
+        </div>
+      `).join("");
+    }
+
+    function initFilters() {
+      $("#filters").innerHTML = portfolioData.categories.map((cat, index) => `
+        <button class="filter-btn ${index === 0 ? "active" : ""}" data-filter="${cat.id}">${cat.name}</button>
+      `).join("");
+
+      $$(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          $$(".filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderWorks(btn.dataset.filter);
+        });
+      });
+    }
+
+    function renderWorks(filter = "all") {
+      const works = filter === "all"
+        ? portfolioData.works
+        : portfolioData.works.filter(work => work.category === filter);
+
+      $("#worksGrid").innerHTML = works.map((work, index) => `
+        <article class="work-card" data-index="${portfolioData.works.indexOf(work)}">
+          <div class="work-img">${imageOrPlaceholder(work.image, work.title)}</div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span>${work.categoryName}</span>
+              <span>${String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <h3>${work.title}</h3>
+            <p>${work.description}</p>
+            <div class="tags">${work.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+          </div>
+        </article>
+      `).join("");
+
+      $$(".work-card").forEach(card => {
+        card.addEventListener("click", () => openModal(portfolioData.works[Number(card.dataset.index)]));
+      });
+    }
+
+    function renderCases() {
+      $("#caseList").innerHTML = portfolioData.cases.map(item => `
+        <article class="case">
+          <div class="case-text">
+            <div>
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <ul class="case-points">
+                ${item.points.map(point => `<li>${point}</li>`).join("")}
+              </ul>
+            </div>
+            <a class="btn btn-secondary" href="#works">查看相关作品</a>
+          </div>
+          <div class="case-gallery">
+            ${item.images.map((src, index) => `<div class="gallery-item">${imageOrPlaceholder(src, `${item.title}-${index + 1}`)}</div>`).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+
+
+    function renderReport() {
+      if (!portfolioData.report) return;
+      $("#reportTitle").textContent = portfolioData.report.title;
+      $("#reportOverview").textContent = portfolioData.report.overview;
+      $("#reportMeta").innerHTML = portfolioData.report.meta.map(item => `
+        <div>
+          <span>${item.label}</span>
+          <b>${item.value}</b>
+        </div>
+      `).join("");
+      $("#reportSections").innerHTML = portfolioData.report.sections.map(section => `
+        <article class="report-card">
+          <h3>${section.title}</h3>
+          <ul>
+            ${section.points.map(point => `<li>${point}</li>`).join("")}
+          </ul>
+        </article>
+      `).join("");
+    }
+
+    function renderProcess() {
+      $("#processGrid").innerHTML = portfolioData.process.map((item, index) => `
+        <div class="process-card">
+          <div class="process-num">${String(index + 1).padStart(2, "0")}</div>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderAbout() {
+      $("#aboutTitle").textContent = portfolioData.about.title;
+      $("#aboutText").textContent = portfolioData.about.text;
+      $("#skillList").innerHTML = portfolioData.about.skills.map(skill => `<div class="skill">${skill}</div>`).join("");
+      $("#contactList").innerHTML = portfolioData.contact.map(item => `
+        <div class="contact-line">
+          <span>${item.label}</span>
+          <b>${item.value}</b>
+        </div>
+      `).join("");
+    }
+
+    function openModal(work) {
+      $("#modalTitle").textContent = work.title;
+      $("#modalDesc").textContent = work.description;
+      $("#modalTags").innerHTML = work.tags.map(tag => `<span class="tag">${tag}</span>`).join("");
+      $("#modalImageBox").innerHTML = work.image
+        ? `<img class="modal-img" src="${work.image}" alt="${work.title}" />`
+        : `<div style="height:420px;">${imageOrPlaceholder("", work.title)}</div>`;
+      $("#modal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      $("#modal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    $("#closeModal").addEventListener("click", closeModal);
+    $("#modal").addEventListener("click", (e) => {
+      if (e.target.id === "modal") closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    initHero();
+    initFilters();
+    renderWorks();
+    renderCases();
+    renderReport();
+    renderProcess();
+    renderAbout();
+  </script>
+</body>
+</html>
